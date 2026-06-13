@@ -5,12 +5,12 @@
     "": {
       "name": "cake",
       "dependencies": {
-        "@junejs/core": "^0.0.7",
+        "@junejs/core": "^0.0.9",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
       },
       "devDependencies": {
-        "@junejs/cli": "^0.0.7",
+        "@junejs/cli": "^0.0.9",
         "@tailwindcss/cli": "^4.3.1",
         "tailwindcss": "^4.3.1",
       },
@@ -33,11 +33,11 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
-    "@junejs/cli": ["@junejs/cli@0.0.7", "", { "dependencies": { "@junejs/core": "0.0.7", "@junejs/server": "0.0.7" }, "bin": { "june": "bin.mjs" } }, "sha512-nJIOcAE5ZiXL1JdlbNyTloxbrFG8y9EPlb24beQ5NlisXlU4HkWcZlFQrDTjmLms2Ge8cc2KNfU59yP38u/RNQ=="],
+    "@junejs/cli": ["@junejs/cli@0.0.9", "", { "dependencies": { "@junejs/core": "0.0.9", "@junejs/server": "0.0.9" }, "bin": { "june": "bin.mjs" } }, "sha512-8nZHxswSm4M+MgH2yq9wUcwXDo9HQtIhkj6N58E337kor2ITf6Ot8RrKKZrToiuOCMjf9k4HdMkPUKxeifX8vQ=="],
 
-    "@junejs/core": ["@junejs/core@0.0.7", "", { "peerDependencies": { "react": "^19.2.0", "react-dom": "^19.2.0" }, "optionalPeers": ["react"] }, "sha512-k2oab7KplxaUVPnD8rfDoG5TWGQTqm48fC6N6WryN1IUw2MaauoNbQvqVpcEREu1Qwq+IRsVXQU/nOzHiU5Wcg=="],
+    "@junejs/core": ["@junejs/core@0.0.9", "", { "peerDependencies": { "react": "^19.2.0", "react-dom": "^19.2.0" }, "optionalPeers": ["react"] }, "sha512-qsWYBkKYLb7Xry/R0yEvo1duXhhLXhbfzDV2VTjvCnsTvK5ZUqx2QoXli+wdYDdCfDQfwShBGb3BmRKnT51XZw=="],
 
-    "@junejs/server": ["@junejs/server@0.0.7", "", { "dependencies": { "@junejs/core": "0.0.7", "marked": "^18.0.5", "rolldown": "^1.1.0" }, "peerDependencies": { "react": "^19.2.0", "react-dom": "^19.2.0" } }, "sha512-d7JeOIYS01IbdkQpGdMHoazdnOUX0SroTNR75oOSz6XvXE5zqqS0DPEF6FdTh65LJFJS9tPDSEFzdM8cU/Jjgg=="],
+    "@junejs/server": ["@junejs/server@0.0.9", "", { "dependencies": { "@junejs/core": "0.0.9", "marked": "^18.0.5", "rolldown": "^1.1.0" }, "peerDependencies": { "react": "^19.2.0", "react-dom": "^19.2.0" } }, "sha512-Xfk4U6Wi8ryVT1/cUyMb2Chn0mhTk3/P1YNOfIKo/zvDWslfxzaqgqea/YiewJu2lJSgv+ezibgvAYJPX48bTQ=="],
 
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.5", "", { "dependencies": { "@tybys/wasm-util": "^0.10.2" }, "peerDependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1" } }, "sha512-AWPoBRJ9tsnVhor4sjO7rkni+7p+2IAEFj6cx06UgP10jkQHqay/36uRV/bFkgrh18D9vb4cr8Q0Pthskgzy+Q=="],
 

@@ -1,8 +1,8 @@
 # 🍫 Cake Site
 
-A chocolate-cake recipe site where **one `route()` definition serves four
-surfaces** — HTML for people, Markdown + JSON + `llms.txt` for agents. Built
-with [June](https://june.build), the agent-ready React framework.
+A chocolate-cake recipe site where **one page serves four surfaces** — HTML
+for people, Markdown + JSON + `llms.txt` for agents. Built with
+[June](https://june.build), the agent-ready React framework.
 
 **Live (same build, two clouds):**
 [recipe](https://june-cake.vercel.app/recipes/chocolate-cake) ·
@@ -12,17 +12,19 @@ with [June](https://june.build), the agent-ready React framework.
 
 ## The whole app
 
-`load()` runs once; each surface is a projection of the same data. The route
-file stays about routing — the JSX lives in its own component:
+The loader runs once; each surface is a projection of the same data. The
+default export is the view; named exports configure the rest:
 
 ```tsx
 // app/recipes/[slug]/page.tsx
-export default route({
-  load: (ctx) => ({ recipe: RECIPES[ctx.params.slug] }),
-  view: ({ recipe }) => <RecipePage recipe={recipe} />,   // → HTML
-  json: ({ recipe }) => recipe,                           // → .json
-  md:   ({ recipe }) => `# ${recipe.title}\n…`,           // → .md
-});
+export const loader = (ctx) => ({ recipe: RECIPES[ctx.params.slug] });
+
+export default function Page({ recipe }) {                 // → HTML
+  return <RecipePage recipe={recipe} />;
+}
+
+export const json = ({ recipe }) => recipe;                // → .json
+export const md   = ({ recipe }) => `# ${recipe.title}\n…`; // → .md
 ```
 
 Three small files, one per concern:
