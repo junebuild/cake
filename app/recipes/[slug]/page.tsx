@@ -27,13 +27,30 @@ export default route({
   },
   metadata: (r) => ({ title: r.title }),
   view: (r) => (                          // GET /recipes/chocolate-cake → HTML
-    <article>
-      <h1>{r.title}</h1>
-      <p>Serves {r.serves}</p>
-      <h2>Ingredients</h2>
-      <ul>{r.ingredients.map((i) => <li key={i}>{i}</li>)}</ul>
-      <h2>Steps</h2>
-      <ol>{r.steps.map((s) => <li key={s}>{s}</li>)}</ol>
+    <article className="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-stone-900/5">
+      <p className="inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">
+        Serves {r.serves}
+      </p>
+      <h1 className="mt-3 text-4xl font-extrabold tracking-tight">{r.title}</h1>
+
+      <h2 className="mt-8 text-xs font-semibold tracking-widest uppercase text-stone-400">Ingredients</h2>
+      <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+        {r.ingredients.map((i) => (
+          <li key={i} className="rounded-lg bg-stone-50 px-3 py-2 text-sm">{i}</li>
+        ))}
+      </ul>
+
+      <h2 className="mt-8 text-xs font-semibold tracking-widest uppercase text-stone-400">Steps</h2>
+      <ol className="mt-3 space-y-3">
+        {r.steps.map((s, i) => (
+          <li key={s} className="flex gap-3">
+            <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-stone-900 text-xs font-bold text-white">
+              {i + 1}
+            </span>
+            <span className="leading-6">{s}</span>
+          </li>
+        ))}
+      </ol>
     </article>
   ),
   json: (r) => r,                         // GET /recipes/chocolate-cake.json
