@@ -12,20 +12,27 @@ with [June](https://june.build), the agent-ready React framework.
 
 ## The whole app
 
-One file. `load()` runs once; each surface is a projection of the same data:
+`load()` runs once; each surface is a projection of the same data. The route
+file stays about routing — the JSX lives in its own component:
 
 ```tsx
+// app/recipes/[slug]/page.tsx
 export default route({
-  load: (ctx) => RECIPES[ctx.params.slug],
-  view: (r) => <article>…</article>,   // GET /recipes/chocolate-cake      → HTML
-  json: (r) => r,                      // GET /recipes/chocolate-cake.json → data
-  md:   (r) => `# ${r.title}\n…`,      // GET /recipes/chocolate-cake.md   → markdown
+  load: (ctx) => ({ recipe: RECIPES[ctx.params.slug] }),
+  view: ({ recipe }) => <RecipePage recipe={recipe} />,   // → HTML
+  json: ({ recipe }) => recipe,                           // → .json
+  md:   ({ recipe }) => `# ${recipe.title}\n…`,           // → .md
 });
 ```
 
+Three small files, one per concern:
+[`recipes.ts`](app/recipes/%5Bslug%5D/recipes.ts) (data) ·
+[`RecipePage.tsx`](app/recipes/%5Bslug%5D/RecipePage.tsx) (view) ·
+[`page.tsx`](app/recipes/%5Bslug%5D/page.tsx) (the route).
+
 `llms.txt`, the sitemap, and an MCP endpoint derive from the routes
 automatically — there's no second codebase for the machine surface, and
-nothing to keep in sync by hand. See [`app/recipes/[slug]/page.tsx`](app/recipes/%5Bslug%5D/page.tsx).
+nothing to keep in sync by hand.
 
 ## Run it
 
