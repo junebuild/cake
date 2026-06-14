@@ -1,7 +1,7 @@
-// One <style> block of build-time-compiled Tailwind. (`npm run styles`
-// recompiles app/_styles.ts.) The header carries one client ISLAND (SaveButton)
-// inside the swap region, so a morph navigation preserves its state.
-import { css } from "./_styles";
+// Styling is app/global.css (`@import "tailwindcss"`) — June auto-links it as a
+// content-hashed, minified, immutable stylesheet; no <style> block, no manual
+// compile step. The header carries one client ISLAND (SaveButton) inside the swap
+// region, so a morph navigation preserves its state.
 import { Island } from "@junejs/core/islands";
 
 import { SaveButton } from "./SaveButton";
@@ -9,7 +9,6 @@ import { SaveButton } from "./SaveButton";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-amber-50 text-stone-900 antialiased">
-      <style>{css}</style>
       <header className="mx-auto flex max-w-2xl items-baseline justify-between px-6 pt-10 pb-2">
         <a href="/" className="text-sm font-semibold tracking-widest uppercase text-amber-700">
           Cake Site
