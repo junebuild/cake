@@ -50,12 +50,14 @@ curl localhost:3000/llms.txt
 ## Deploy
 
 ```bash
-june deploy         # → Cloudflare Workers (built-in)
-./deploy-vercel.sh  # → Vercel Edge (15 lines of glue, same bundle)
+june deploy          # → Cloudflare Workers (the default adapter)
+june deploy --prod   # → Vercel Edge — set deploy.adapter: vercel() in june.config.ts
 ```
 
-Both run the **identical** `june build` output. The framework core is just
-`fetch(Request) → Response`, so a deploy target is an adapter, not a rewrite.
+The target is the **adapter**, not a rewrite: `vercel()` (from `@junejs/server`)
+emits the Vercel Build Output API straight from the same `june build` bundle —
+the framework core is just `fetch(Request) → Response`, so the identical worker
+runs on Cloudflare Workers and Vercel Edge.
 
 ## How the page stays light
 
