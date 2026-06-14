@@ -18,4 +18,19 @@ export const RECIPES: Record<string, Recipe> = {
       "Cool before slicing.",
     ],
   },
+  "carrot-cake": {
+    title: "Carrot Cake",
+    serves: 10,
+    ingredients: [
+      "250g grated carrot", "200g brown sugar", "200ml sunflower oil",
+      "3 eggs", "200g flour", "2 tsp cinnamon", "1 tsp baking soda", "100g walnuts",
+    ],
+    steps: [
+      "Whisk eggs, sugar, and oil until smooth.",
+      "Stir in the grated carrot and walnuts.",
+      "Fold in flour, cinnamon, and baking soda.",
+      "Bake at 170°C for 40 minutes.",
+      "Top with cream-cheese frosting once cool.",
+    ],
+  },
 };
