@@ -2,13 +2,14 @@
 //
 //   GET /api/activity  → a live "kitchen activity" feed over Server-Sent Events
 //                        (the server half of june.build/docs/features-live-updates).
-//   GET /api/visits    → a real, persistent visit counter backed by Turso (libsql).
+//   GET /api/visits    → a real, persistent visit counter on Turso, reached through
+//                        June's AMBIENT db — no client, no credentials here.
 //
-// The visit counter is the Vercel + Turso experiment: a plain HTTPS libsql
-// connection (url + token from the function's env) works on the Node runtime with
-// no socket and no platform binding. @libsql/client/web is the pure-fetch client,
-// so it bundles into the function (June's deploy ships one bundle, no node_modules).
-import { createClient } from "@libsql/client/web";
+// The visit counter is the whole data story in five lines: `import { db }` and
+// query. june.config.ts declared `db: turso()`; June opened it from the env and
+// runs every request in its scope, so `db` just works. The SAME code on Workers
+// would talk to D1 — the declaration is the only thing that changes.
+import { db } from "@junejs/db";
 
 const MESSAGES = [
   "🧁 someone saved Carrot Cake",
@@ -24,40 +25,21 @@ const MESSAGES = [
 const SESSION_MS = 250_000;
 const TICK_MS = 4000;
 
-// --- Turso (libsql) visit counter -------------------------------------------
-// One client per warm instance (Fluid compute reuses instances). Credentials come
-// from the function's environment — never bundled, never logged.
-let client: ReturnType<typeof createClient> | undefined;
+// --- visit counter, via the ambient db --------------------------------------
 let schemaReady = false;
 
-function turso() {
-  if (!client) {
-    client = createClient({
-      url: process.env.TURSO_DATABASE_URL ?? "",
-      authToken: process.env.TURSO_AUTH_TOKEN,
-    });
-  }
-  return client;
-}
-
 async function visitCounter(): Promise<Response> {
-  if (!process.env.TURSO_DATABASE_URL) {
-    return Response.json({ error: "TURSO_DATABASE_URL not configured" }, { status: 503 });
-  }
   try {
-    const c = turso();
     if (!schemaReady) {
-      await c.execute("CREATE TABLE IF NOT EXISTS visits (id INTEGER PRIMARY KEY, count INTEGER NOT NULL DEFAULT 0)");
-      await c.execute("INSERT OR IGNORE INTO visits (id, count) VALUES (1, 0)");
+      await db.exec("CREATE TABLE IF NOT EXISTS visits (id INTEGER PRIMARY KEY, count INTEGER NOT NULL DEFAULT 0)");
+      await db.run("INSERT OR IGNORE INTO visits (id, count) VALUES (1, 0)");
       schemaReady = true;
     }
-    await c.execute("UPDATE visits SET count = count + 1 WHERE id = 1");
-    const r = await c.execute("SELECT count FROM visits WHERE id = 1");
-    const visits = Number((r.rows[0] as { count?: number | bigint })?.count ?? 0);
-    return Response.json({ visits });
+    await db.run("UPDATE visits SET count = count + 1 WHERE id = 1");
+    const row = await db.get<{ count: number | bigint }>("SELECT count FROM visits WHERE id = 1");
+    return Response.json({ visits: Number(row?.count ?? 0) });
   } catch (err) {
-    // Don't leak connection details — just the failure class.
-    return Response.json({ error: "turso query failed", detail: String((err as Error).message) }, { status: 500 });
+    return Response.json({ error: "db query failed", detail: String((err as Error).message) }, { status: 500 });
   }
 }
 

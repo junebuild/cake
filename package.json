@@ -8,15 +8,16 @@
     "info": "june info"
   },
   "dependencies": {
-    "@junejs/core": "^0.0.17",
+    "@junejs/core": "^0.0.18",
+    "@junejs/db": "^0.0.18",
     "@libsql/client": "^0.17.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@junejs/cli": "^0.0.17",
+    "@junejs/cli": "^0.0.18",
     "tailwindcss": "^4.3.1",
-    "@junejs/server": "^0.0.17",
+    "@junejs/server": "^0.0.18",
     "@tailwindcss/postcss": "^4.0.0",
     "postcss": "^8.4.0"
   }
