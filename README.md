@@ -3,8 +3,8 @@
 A cake-recipe site where **one page serves four surfaces** — HTML for people,
 Markdown + JSON + `llms.txt` for agents — and adds an interactive layer (morph
 navigation + a live feed) only where it earns one. Built with
-[June](https://june.build), the agent-ready React framework, and deployed on
-Vercel Edge.
+[June](https://june.build), the agent-ready React framework, and deployed on the
+Vercel Node runtime (Fluid compute).
 
 **Live:**
 [chocolate](https://june-cake.vercel.app/recipes/chocolate-cake) ·
@@ -84,10 +84,11 @@ june deploy        # uses the adapter from june.config.ts
 
 The target is the **adapter**, not a rewrite. This site sets
 `deploy.adapter: vercel()` (from `@junejs/server`), which emits the Vercel Build
-Output API straight from the same `june build` bundle. Drop the adapter and
-`june deploy` ships to Cloudflare Workers from the *identical* bundle — the
-framework core is just `fetch(Request) → Response`, so the same worker runs on
-both.
+Output API straight from the same `june build` bundle. `vercel()` targets the
+**Node runtime on Fluid compute** by default (`vercel({ runtime: "edge" })` opts
+into an Edge Function instead). Drop the adapter entirely and `june deploy` ships
+to Cloudflare Workers from the *identical* bundle — the framework core is just
+`fetch(Request) → Response`, so the same worker runs on all three.
 
 ## Styling
 
