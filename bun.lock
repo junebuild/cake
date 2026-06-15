@@ -5,13 +5,13 @@
     "": {
       "name": "cake",
       "dependencies": {
-        "@junejs/core": "^0.0.16",
+        "@junejs/core": "^0.0.17",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
       },
       "devDependencies": {
-        "@junejs/cli": "^0.0.16",
-        "@junejs/server": "^0.0.16",
+        "@junejs/cli": "^0.0.17",
+        "@junejs/server": "^0.0.17",
         "@tailwindcss/postcss": "^4.0.0",
         "postcss": "^8.4.0",
         "tailwindcss": "^4.3.1",
@@ -37,13 +37,13 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
-    "@junejs/cli": ["@junejs/cli@0.0.16", "", { "dependencies": { "@junejs/core": "0.0.16", "@junejs/server": "0.0.16" }, "bin": { "june": "bin.mjs" } }, "sha512-CXfyU67hYdQXADOwgJCuoI0FMeKihl41Kzxu77IdGUP/h05sWkj5Q07cvBiRi/kqZe40OJMuFKkONBN21HKgmQ=="],
+    "@junejs/cli": ["@junejs/cli@0.0.17", "", { "dependencies": { "@junejs/core": "0.0.17", "@junejs/server": "0.0.17" }, "bin": { "june": "bin.mjs" } }, "sha512-tK6VSmWe1Cly2jguAF7lpJmbIY87uO4dMnS5yfYcuWKhF0hnr4iVTBxzPeN/UTzjM8gpbjYFLIGbQzi9WMuReA=="],
 
-    "@junejs/core": ["@junejs/core@0.0.16", "", { "peerDependencies": { "react": "^19.2.0", "react-dom": "^19.2.0" }, "optionalPeers": ["react"] }, "sha512-Mg/FZAHT/dW2m7EV/oFzis9YlAJKth7o8GfUHrgN8Y8rXiqM570FOG2RhUEfXZO/ij/pqfwoB8iG1IhXM5rVHQ=="],
+    "@junejs/core": ["@junejs/core@0.0.17", "", { "peerDependencies": { "react": "^19.2.0", "react-dom": "^19.2.0" }, "optionalPeers": ["react"] }, "sha512-vomf/IXJIRLAf1/fXEzzkPycZu3DCXkw2T2CN/M90qpECSmGrhltl7rYU/3JD1e4W/4RVEw/0IR28+WCg0Al2A=="],
 
-    "@junejs/db": ["@junejs/db@0.0.16", "", { "dependencies": { "@junejs/core": "0.0.16" } }, "sha512-146+fC4NA2aPsUSzRpgxKiizOYh2hJclVAVyI76cYmV1z7UK5TvEdVsasc/cc+i4hSScFp4AsgJIGCdwWqdwWA=="],
+    "@junejs/db": ["@junejs/db@0.0.17", "", { "dependencies": { "@junejs/core": "0.0.17" } }, "sha512-e5CiN9O2ZSBPgOYKtwYdwmgDsNA2J7GcC5DYXPy1b+Sv9NH7l2KPb+37WvVxL5NdqaCrDekPrCmk40phI+4scw=="],
 
-    "@junejs/server": ["@junejs/server@0.0.16", "", { "dependencies": { "@junejs/core": "0.0.16", "@junejs/db": "0.0.16", "lightningcss": "^1.27.0", "marked": "^18.0.5", "postcss": "^8.4.0", "postcss-modules": "^6.0.0", "rolldown": "^1.1.0" }, "peerDependencies": { "react": "^19.2.0", "react-dom": "^19.2.0" } }, "sha512-FnbrFUi+Fb0UjT58mLScWBx8N9HwSaO63VvGxE9ivN6TMPsiQYIJJH/4ADFBBBtAFs3oKTmNLCHRHAe4Umf6KQ=="],
+    "@junejs/server": ["@junejs/server@0.0.17", "", { "dependencies": { "@junejs/core": "0.0.17", "@junejs/db": "0.0.17", "lightningcss": "^1.27.0", "marked": "^18.0.5", "postcss": "^8.4.0", "postcss-modules": "^6.0.0", "rolldown": "^1.1.0" }, "peerDependencies": { "mysql2": "^3.0.0", "pg": "^8.0.0", "react": "^19.2.0", "react-dom": "^19.2.0" }, "optionalPeers": ["mysql2", "pg"] }, "sha512-BMbkxWfp34yrY4u4wNkFKAKfa1rjWGGHRDR23P0AFbF/XRj2bQwHv1BiJ2Wem01Yen0rTZXYT0lHtm+3mGtayA=="],
 
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.5", "", { "dependencies": { "@tybys/wasm-util": "^0.10.2" }, "peerDependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1" } }, "sha512-AWPoBRJ9tsnVhor4sjO7rkni+7p+2IAEFj6cx06UgP10jkQHqay/36uRV/bFkgrh18D9vb4cr8Q0Pthskgzy+Q=="],
 
