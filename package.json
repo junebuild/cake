@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@junejs/core": "^0.0.17",
+    "@libsql/client": "^0.17.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
